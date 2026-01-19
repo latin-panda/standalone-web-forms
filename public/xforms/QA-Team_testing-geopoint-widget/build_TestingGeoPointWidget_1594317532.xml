@@ -1,0 +1,57 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>TestingGeoPointWidgetWithValue</h:title>
+    <model>
+      <instance>
+        <data id="build_TestingGeoPointWidget_1594317532">
+          <meta>
+            <instanceID/>
+          </meta>
+          <geo_point_widget_without_maps_readonly/>
+          <geo_point_widget_with_maps_readonly>54.2 18.2 150.0 15.5</geo_point_widget_with_maps_readonly>
+          <geo_point_widget_without_maps/>
+          <geo_point_widget_with_maps/>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="English">
+          <text id="/data/geo_point_widget_without_maps_readonly:label">
+            <value>GeoPoint Widget Readonly (without maps)</value>
+          </text>
+          <text id="/data/geo_point_widget_with_maps_readonly:label">
+            <value>GeoPoint Widget Readonly (with maps)</value>
+          </text>
+          <text id="/data/geo_point_widget_with_maps_readonly:hint">
+            <value></value>
+          </text>
+          <text id="/data/geo_point_widget_without_maps:label">
+            <value>GeoPoint Widget (without maps)</value>
+          </text>
+          <text id="/data/geo_point_widget_with_maps:label">
+            <value>GeoPoint Widget (with maps)</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/geo_point_widget_without_maps_readonly" type="geopoint" readonly="true()"/>
+      <bind nodeset="/data/geo_point_widget_with_maps_readonly" type="geopoint" readonly="true()"/>
+      <bind nodeset="/data/geo_point_widget_without_maps" type="geopoint"/>
+      <bind nodeset="/data/geo_point_widget_with_maps" type="geopoint"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/geo_point_widget_without_maps_readonly">
+      <label ref="jr:itext('/data/geo_point_widget_without_maps_readonly:label')"/>
+    </input>
+    <input ref="/data/geo_point_widget_with_maps_readonly" appearance="maps">
+      <label ref="jr:itext('/data/geo_point_widget_with_maps_readonly:label')"/>
+      <hint ref="jr:itext('/data/geo_point_widget_with_maps_readonly:hint')"/>
+    </input>
+    <input ref="/data/geo_point_widget_without_maps">
+      <label ref="jr:itext('/data/geo_point_widget_without_maps:label')"/>
+    </input>
+    <input ref="/data/geo_point_widget_with_maps" appearance="maps">
+      <label ref="jr:itext('/data/geo_point_widget_with_maps:label')"/>
+    </input>
+  </h:body>
+</h:html>

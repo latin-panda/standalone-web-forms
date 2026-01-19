@@ -1,0 +1,55 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa">
+  <h:head>
+    <h:title>point in repeat</h:title>
+    <model>
+      <instance>
+        <data id="build_point-in-repeat_1575367184">
+          <meta>
+            <instanceID/>
+          </meta>
+          <text/>
+          <shape/>
+          <group jr:template="">
+            <point/>
+          </group>
+        </data>
+      </instance>
+      <itext>
+        <translation lang="English">
+          <text id="/data/text:label">
+            <value>text</value>
+          </text>
+          <text id="/data/shape:label">
+            <value>shape</value>
+          </text>
+          <text id="/data/group:label">
+            <value>group</value>
+          </text>
+          <text id="/data/group/point:label">
+            <value>point</value>
+          </text>
+        </translation>
+      </itext>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/text" type="string"/>
+      <bind nodeset="/data/shape" type="geoshape"/>
+      <bind nodeset="/data/group/point" type="geopoint"/>
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/text">
+      <label ref="jr:itext('/data/text:label')"/>
+    </input>
+    <input ref="/data/shape">
+      <label ref="jr:itext('/data/shape:label')"/>
+    </input>
+    <group ref="/data/group">
+      <label ref="jr:itext('/data/group:label')"/>
+      <repeat nodeset="/data/group">
+        <input ref="/data/group/point" appearance="maps">
+          <label ref="jr:itext('/data/group/point:label')"/>
+        </input>
+      </repeat>
+    </group>
+  </h:body>
+</h:html>

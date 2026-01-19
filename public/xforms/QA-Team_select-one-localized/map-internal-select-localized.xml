@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+  <h:head>
+    <h:title>Visit registration</h:title>
+    <model odk:xforms-version="1.0.0">
+      <itext>
+        <translation lang="English (en)">
+          <text id="places-0">
+            <value>HR Giger Museum</value>
+          </text>
+          <text id="places-1">
+            <value>K2</value>
+          </text>
+          <text id="/data/place:label">
+            <value>Select a place</value>
+          </text>
+        </translation>
+        <translation lang="French (fr)">
+          <text id="places-0">
+            <value>Le musée H.R. Giger</value>
+          </text>
+          <text id="places-1">
+            <value>Le mont K2</value>
+          </text>
+          <text id="/data/place:label">
+            <value>Lieu</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="map-internal-select-localized">
+          <place/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <instance id="places">
+        <root>
+          <item>
+            <itextId>places-0</itextId>
+            <name>giger_museum</name>
+            <geometry>46.5841618 7.0801379 0 0</geometry>
+            <description>Such art! So much wow!</description>
+            <annual_visits>40000</annual_visits>
+          </item>
+          <item>
+            <itextId>places-1</itextId>
+            <name>k2</name>
+            <geometry>35.880508260751576 76.51505715762721 0 0</geometry>
+            <description>Such tall! Much wow!</description>
+            <annual_visits>1000</annual_visits>
+          </item>
+        </root>
+      </instance>
+      <bind nodeset="/data/place" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/data/place" appearance="map">
+      <label ref="jr:itext('/data/place:label')"/>
+      <itemset nodeset="instance('places')/root/item[true()]">
+        <value ref="name"/>
+        <label ref="jr:itext(itextId)"/>
+      </itemset>
+    </select1>
+  </h:body>
+</h:html>

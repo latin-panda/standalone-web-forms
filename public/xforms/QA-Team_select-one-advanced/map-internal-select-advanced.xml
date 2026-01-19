@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+  <h:head>
+    <h:title>map-internal-select-advanced</h:title>
+    <model odk:xforms-version="1.0.0">
+      <instance>
+        <data id="map-internal-select-advanced">
+          <facility_type/>
+          <site/>
+          <site_name/>
+          <task/>
+          <task_note/>
+          <meta>
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <instance id="facility_types">
+        <root>
+          <item>
+            <name>clinic</name>
+            <label>Clinic</label>
+          </item>
+          <item>
+            <name>hospital</name>
+            <label>Hospital</label>
+          </item>
+          <item>
+            <name>dentist</name>
+            <label>Dentist</label>
+          </item>
+          <item>
+            <name>pharmacy</name>
+            <label>Pharmacy</label>
+          </item>
+          <item>
+            <name>any</name>
+            <label>Any (no filter)</label>
+          </item>
+        </root>
+      </instance>
+      <instance id="sites">
+        <root>
+          <item>
+            <name>dentist</name>
+            <label>Dentist</label>
+            <geometry>9.577176438610081 44.06191773404149 0 0</geometry>
+            <type>dentist</type>
+            <task>Validate location</task>
+          </item>
+          <item>
+            <name>intl</name>
+            <label>International Hospital</label>
+            <geometry>9.52887 44.07508 0 0</geometry>
+            <type>hospital</type>
+            <task>Get available bed count</task>
+          </item>
+          <item>
+            <name>gargaar</name>
+            <label>Gargaar Multi specialty Hospital</label>
+            <geometry>9.55973 44.06183 0 0</geometry>
+            <type>hospital</type>
+            <task>Get available bed count</task>
+          </item>
+          <item>
+            <name>disabled</name>
+            <label>Disabled people hospital</label>
+            <geometry>9.56006 44.05540 0 0</geometry>
+            <type>hospital</type>
+            <task>Get available bed count</task>
+          </item>
+          <item>
+            <name>care_clinic</name>
+            <label>Hargeisa Care Clinic</label>
+            <geometry>9.542410651179239 44.05110683914734 0 0</geometry>
+            <type>clinic</type>
+            <task>Get average daily patient count</task>
+          </item>
+        </root>
+      </instance>
+      <bind nodeset="/data/facility_type" type="string"/>
+      <bind nodeset="/data/site" type="string" required="true()"/>
+      <bind nodeset="/data/site_name" type="string" calculate="instance('sites')/root/item[name= /data/site ]/label"/>
+      <bind nodeset="/data/task" type="string" calculate="instance('sites')/root/item[name= /data/site ]/task"/>
+      <bind nodeset="/data/task_note" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+    </model>
+  </h:head>
+  <h:body>
+    <select1 ref="/data/facility_type">
+      <label>What types of facilities do you want to see?</label>
+      <itemset nodeset="instance('facility_types')/root/item">
+        <value ref="name"/>
+        <label ref="label"/>
+      </itemset>
+    </select1>
+    <select1 ref="/data/site" appearance="map">
+      <label>Select the site you will visit</label>
+      <itemset
+        nodeset="instance('sites')/root/item[if( /data/facility_type ='any', true(), type= /data/facility_type )]">
+        <value ref="name"/>
+        <label ref="label"/>
+      </itemset>
+    </select1>
+    <input ref="/data/task_note">
+      <label>The task for
+        <output value=" /data/site_name "/>
+        is:&lt;br/&gt;
+        <output value=" /data/task "/>
+      </label>
+    </input>
+  </h:body>
+</h:html>
