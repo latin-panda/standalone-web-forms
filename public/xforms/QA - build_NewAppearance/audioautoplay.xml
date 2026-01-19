@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>audio autoplay</h:title>
+        <model odk:xforms-version="1.0.0">
+            <itext>
+                <translation lang="default" default="true()">
+                    <text id="opt_abcd-0">
+                        <value>a</value>
+                        <value form="audio">jr://audio/carrioncrow.mp3</value>
+                    </text>
+                    <text id="opt_abcd-1">
+                        <value>b</value>
+                        <value form="audio">jr://audio/european-robin.mp3</value>
+                    </text>
+                    <text id="opt_abcd-2">
+                        <value>c</value>
+                        <value form="audio">jr://audio/goldeneagle.mp3</value>
+                    </text>
+                    <text id="/data/feel:label">
+                        <value>How does this song make you feel?</value>
+                        <value form="audio">jr://audio/goldeneagle.mp3</value>
+                    </text>
+                    <text id="/data/two:label">
+                        <value>ywo</value>
+                        <value form="audio">jr://audio/european-robin.mp3</value>
+                    </text>
+                    <text id="/data/feelf:label">
+                        <value>How does this song make you feel?</value>
+                        <value form="audio">jr://audio/goldeneagle.mp3</value>
+                    </text>
+                    <text id="/data/twog:label">
+                        <value>ywo</value>
+                        <value form="audio">jr://audio/european-robin.mp3</value>
+                    </text>
+                    <text id="/data/feelg:label">
+                        <value>How does this song make you feel?</value>
+                        <value form="audio">jr://audio/goldeneagle.mp3</value>
+                    </text>
+                    <text id="/data/m/feelg:label">
+                        <value>How does this song make you feel?</value>
+                        <value form="audio">jr://audio/goldeneagle.mp3</value>
+                    </text>
+                    <text id="/data/m/three:label">
+                        <value>ywo</value>
+                        <value form="audio">jr://audio/european-robin.mp3</value>
+                    </text>
+                </translation>
+            </itext>
+            <instance>
+                <data id="audioautoplay" version="1">
+                    <feel/>
+                    <two/>
+                    <feelf/>
+                    <twog/>
+                    <feelg/>
+                    <select_one_widget/>
+                    <select_one_widget2/>
+                    <m>
+                        <feelg/>
+                        <three/>
+                        <select_one_widgetn/>
+                    </m>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </data>
+            </instance>
+            <instance id="opt_abcd">
+                <root>
+                    <item>
+                        <itextId>opt_abcd-0</itextId>
+                        <name>a</name>
+                    </item>
+                    <item>
+                        <itextId>opt_abcd-1</itextId>
+                        <name>b</name>
+                    </item>
+                    <item>
+                        <itextId>opt_abcd-2</itextId>
+                        <name>c</name>
+                    </item>
+                </root>
+            </instance>
+            <bind nodeset="/data/feel" type="string"/>
+            <bind nodeset="/data/two" type="string"/>
+            <bind nodeset="/data/feelf" type="string"/>
+            <bind nodeset="/data/twog" type="string"/>
+            <bind nodeset="/data/feelg" type="string"/>
+            <bind nodeset="/data/select_one_widget" type="string"/>
+            <bind nodeset="/data/select_one_widget2" type="string"/>
+            <bind nodeset="/data/m/feelg" type="string"/>
+            <bind nodeset="/data/m/three" type="string"/>
+            <bind nodeset="/data/m/select_one_widgetn" type="string"/>
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+        </model>
+    </h:head>
+    <h:body>
+        <input ref="/data/feel" autoplay="audio">
+            <label ref="jr:itext('/data/feel:label')"/>
+        </input>
+        <input ref="/data/two" autoplay="audio">
+            <label ref="jr:itext('/data/two:label')"/>
+        </input>
+        <input ref="/data/feelf" autoplay="audio">
+            <label ref="jr:itext('/data/feelf:label')"/>
+        </input>
+        <input ref="/data/twog" autoplay="audio">
+            <label ref="jr:itext('/data/twog:label')"/>
+        </input>
+        <input ref="/data/feelg" autoplay="audio">
+            <label ref="jr:itext('/data/feelg:label')"/>
+        </input>
+        <select1 ref="/data/select_one_widget" autoplay="audio">
+            <label>Select one widget</label>
+            <itemset nodeset="instance('opt_abcd')/root/item">
+                <value ref="name"/>
+                <label ref="jr:itext(itextId)"/>
+            </itemset>
+        </select1>
+        <select1 ref="/data/select_one_widget2" appearance="columns-pack no-buttons">
+            <label>Select one widget</label>
+            <itemset nodeset="instance('opt_abcd')/root/item">
+                <value ref="name"/>
+                <label ref="jr:itext(itextId)"/>
+            </itemset>
+        </select1>
+        <group autoplay="audio" appearance="field-list" ref="/data/m">
+            <input ref="/data/m/feelg" autoplay="audio">
+                <label ref="jr:itext('/data/m/feelg:label')"/>
+            </input>
+            <input ref="/data/m/three" autoplay="audio">
+                <label ref="jr:itext('/data/m/three:label')"/>
+            </input>
+            <select1 ref="/data/m/select_one_widgetn">
+                <label>Select one widget</label>
+                <itemset nodeset="instance('opt_abcd')/root/item">
+                    <value ref="name"/>
+                    <label ref="jr:itext(itextId)"/>
+                </itemset>
+            </select1>
+        </group>
+    </h:body>
+</h:html>

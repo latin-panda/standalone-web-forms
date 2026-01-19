@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>Audio crash troubleshooting</h:title>
+        <model odk:xforms-version="1.0.0">
+            <itext>
+                <translation lang="default" default="true()">
+                    <text id="/data/q1:label">
+                        <value>Q1</value>
+                        <value form="audio">jr://audio/foo.m4a</value>
+                    </text>
+                    <text id="/data/q2:label">
+                        <value>Q2</value>
+                        <value form="audio">jr://audio/bar.m4a</value>
+                    </text>
+                    <text id="/data/q3:label">
+                        <value>Q3</value>
+                        <value form="audio">jr://audio/baz.m4a</value>
+                    </text>
+                </translation>
+            </itext>
+            <instance>
+                <data id="audio_crash" version="20240411112659">
+                    <q1/>
+                    <q2/>
+                    <q3/>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </data>
+            </instance>
+            <instance id="choices1">
+                <root>
+                    <item>
+                        <name>one</name>
+                        <label>One</label>
+                    </item>
+                    <item>
+                        <name>two</name>
+                        <label>Two</label>
+                    </item>
+                    <item>
+                        <name>three</name>
+                        <label>Three</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="choices2">
+                <root>
+                    <item>
+                        <name>one2</name>
+                        <label>One 2</label>
+                    </item>
+                    <item>
+                        <name>two2</name>
+                        <label>Two 2</label>
+                    </item>
+                    <item>
+                        <name>three2</name>
+                        <label>Three 2</label>
+                    </item>
+                </root>
+            </instance>
+            <instance id="choices3">
+                <root>
+                    <item>
+                        <name>one3</name>
+                        <label>One 3</label>
+                    </item>
+                    <item>
+                        <name>two3</name>
+                        <label>Two 3</label>
+                    </item>
+                    <item>
+                        <name>three3</name>
+                        <label>Three 3</label>
+                    </item>
+                </root>
+            </instance>
+            <bind nodeset="/data/q1" type="string"/>
+            <bind nodeset="/data/q2" type="string"/>
+            <bind nodeset="/data/q3" type="string"/>
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+        </model>
+    </h:head>
+    <h:body>
+        <select1 ref="/data/q1" autoplay="audio">
+            <label ref="jr:itext('/data/q1:label')"/>
+            <itemset nodeset="instance('choices1')/root/item">
+                <value ref="name"/>
+                <label ref="label"/>
+            </itemset>
+        </select1>
+        <select1 ref="/data/q2" autoplay="audio">
+            <label ref="jr:itext('/data/q2:label')"/>
+            <itemset nodeset="instance('choices2')/root/item">
+                <value ref="name"/>
+                <label ref="label"/>
+            </itemset>
+        </select1>
+        <select1 ref="/data/q3" autoplay="audio">
+            <label ref="jr:itext('/data/q3:label')"/>
+            <itemset nodeset="instance('choices3')/root/item">
+                <value ref="name"/>
+                <label ref="label"/>
+            </itemset>
+        </select1>
+    </h:body>
+</h:html>

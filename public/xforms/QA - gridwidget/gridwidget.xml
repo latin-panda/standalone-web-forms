@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+        xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa"
+        xmlns:odk="http://www.opendatakit.org/xforms" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <h:head>
+        <h:title>gridwidget</h:title>
+        <model>
+            <itext>
+                <translation default="true()" lang="default">
+                    <text id="/gridwidget/favourite_1/b:label">
+                        <value>B</value>
+                        <value form="audio">jr://audio/b.wav</value>
+                    </text>
+                    <text id="/gridwidget/favourite_1/a:label">
+                        <value>A</value>
+                        <value form="audio">jr://audio/a.wav</value>
+                    </text>
+                    <text id="/gridwidget/favourite_2/a:label">
+                        <value>A</value>
+                        <value form="audio">jr://audio/a.wav</value>
+                    </text>
+                    <text id="/gridwidget/favourite_2/b:label">
+                        <value>B</value>
+                        <value form="audio">jr://audio/b.wav</value>
+                    </text>
+                </translation>
+            </itext>
+            <instance>
+                <gridwidget id="gridwidget" version="2">
+                    <favourite_1/>
+                    <favourite_2/>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </gridwidget>
+            </instance>
+            <bind nodeset="/gridwidget/favourite_1" type="select1"/>
+            <bind nodeset="/gridwidget/favourite_2" type="select1"/>
+            <bind jr:preload="uid" nodeset="/gridwidget/meta/instanceID" readonly="true()" type="string"/>
+        </model>
+    </h:head>
+    <h:body>
+        <select1 appearance="compact" ref="/gridwidget/favourite_1">
+            <label>Which is your favourite?</label>
+            <item>
+                <label ref="jr:itext('/gridwidget/favourite_1/a:label')"/>
+                <value>a</value>
+            </item>
+            <item>
+                <label ref="jr:itext('/gridwidget/favourite_1/b:label')"/>
+                <value>b</value>
+            </item>
+        </select1>
+        <select1 appearance="columns-pack" ref="/gridwidget/favourite_2">
+            <label>What is your favourite?</label>
+            <item>
+                <label ref="jr:itext('/gridwidget/favourite_2/a:label')"/>
+                <value>a</value>
+            </item>
+            <item>
+                <label ref="jr:itext('/gridwidget/favourite_2/b:label')"/>
+                <value>b</value>
+            </item>
+        </select1>
+    </h:body>
+</h:html>
