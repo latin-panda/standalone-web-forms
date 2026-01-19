@@ -2,19 +2,28 @@
 import { OdkWebForm } from '@getodk/web-forms';
 import { ref } from 'vue';
 
-import allQuestionTypes from '../public/xml-forms/all-question-types.xml?raw';
-/*import dateQuestionType from '../public/xml-forms/date.xml?raw';
-import flatGroups from '../public/xml-forms/7-readonly-group.xml?raw';
-import nestedGroups from '../public/xml-forms/nested-groups.xml?raw';
-import nestedRepeats from '../public/xml-forms/nested-repeat.xml?raw';*/
-import stringWidgets from '../public/xml-forms/string-widgets.xml?raw';
-import thousandsSeparator from '../public/xml-forms/thousands-separator.xml?raw';
+const xmlModules = import.meta.glob('../public/xforms/**/*.xml', { as: 'raw' });
+
+const forms = Object.keys(xmlModules).map((path) => {
+  const parts = path.split('/');
+  const dir = parts[parts.length - 2];
+  return { path, dir, name: dir };
+}).sort((a, b) => a.name.localeCompare(b.name));
 
 const formXml = ref<string | null>(null);
+const currentFormDir = ref<string>('');
+
+const selectForm = async (form: { path: string; dir: string; name: string }) => {
+  const module = await xmlModules[form.path]();
+  formXml.value = module;
+  currentFormDir.value = form.dir;
+};
 
 // @ts-ignore
 const fetchAttachment = async (attachment) => {
-  const response = await fetch('/xml-forms' + attachment.pathname);
+  // Assuming attachment.pathname is relative (e.g., 'asset.jpg'), prepend with form dir
+  const assetPath = `/xforms/${currentFormDir.value}/${attachment.pathname}`;
+  const response = await fetch(assetPath);
   const contentType = response.headers.get('content-type');
 
   const fetchHeaders = new Headers();
@@ -69,24 +78,20 @@ const handleChunkedSubmit = async (data: any) => {
     <h1>Blank Project - Web Forms Plugin</h1>
     <p>Choose a form from below:</p>
     <ul>
-      <li @click="formXml = allQuestionTypes"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">All Question Types</a></li>
-      <li @click="formXml = thousandsSeparator"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">Thousands Separator</a></li>
-      <li @click="formXml = stringWidgets"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">String Widgets</a></li>
-      <!--
-      <li @click="formXml = dateQuestionType"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">Date question type</a></li>
-      <li @click="formXml = flatGroups"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">Groups - no nested</a></li>
-      <li @click="formXml = nestedGroups"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">Groups - nested</a></li>
-      <li @click="formXml = nestedRepeats"><a style="margin: 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">Repeats - nested</a></li>
-      -->
+      <li
+          v-for="form in forms"
+          :key="form.path"
+          @click="selectForm(form)"
+          style="margin: 20px 20px 40px 20px;"
+      >
+        <a style="margin: 20px 20px 20px 20px; cursor: pointer; color: dodgerblue; text-decoration: underline;">
+          {{ form.name }}
+        </a>
+      </li>
     </ul>
   </template>
 
   <template v-if="formXml != null">
-    <div style="background: black; color: white; padding: 10px; font-size: 10px;">
-      <span>Blank Project - Web Forms Plugin</span>
-      <a @click="formXml = null" style="margin-left: 40px; cursor: pointer;"><b>Click here to select another form</b></a>
-    </div>
-
     <OdkWebForm
         :form-xml="formXml"
         :fetch-form-attachment="fetchAttachment"
@@ -94,8 +99,12 @@ const handleChunkedSubmit = async (data: any) => {
         @submit="handleSubmit"
         @submit-chunked="handleChunkedSubmit"
     />
-  </template>
 
+    <div style="background: black; color: white; padding: 10px; font-size: 10px;">
+      <span>Blank Project - Web Forms Plugin</span>
+      <a @click="formXml = null" style="margin-left: 40px; cursor: pointer;"><b>Click here to select another form</b></a>
+    </div>
+  </template>
 </template>
 
 <style scoped>
