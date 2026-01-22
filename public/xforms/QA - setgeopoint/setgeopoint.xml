@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:odk="http://www.opendatakit.org/xforms">
+  <h:head>
+    <h:title>combined-setgeopoint-test</h:title>
+    <model>
+      <instance>
+        <data id="combined-setgeopoint-test">
+          <required_text />
+          <location_first_load />
+          <location_instance_load />
+          <trigger_text />
+          <location_value_changed />
+          <setvalue_target />
+          <person jr:template="">
+            <age />
+            <location_new_repeat />
+          </person>
+        </data>
+      </instance>
+      <bind nodeset="/data/required_text" type="string" required="true()" />
+      <bind nodeset="/data/location_first_load" type="string" readonly="true()" />
+      <bind nodeset="/data/location_instance_load" type="string" readonly="true()" />
+      <bind nodeset="/data/trigger_text" type="string" />
+      <bind nodeset="/data/location_value_changed" type="string" readonly="true()" />
+      <bind nodeset="/data/setvalue_target" type="string" readonly="true()" />
+      <bind nodeset="/data/person/age" type="integer" />
+      <bind nodeset="/data/person/location_new_repeat" type="string" readonly="true()" />
+      <odk:setgeopoint ref="/data/location_first_load" event="odk-instance-first-load" />
+      <odk:setgeopoint ref="/data/location_instance_load" event="odk-instance-load" />
+    </model>
+  </h:head>
+  <h:body>
+    <input ref="/data/required_text">
+      <label>Required Text</label>
+    </input>
+    <input ref="/data/location_first_load">
+      <label>Location (odk-instance-first-load)</label>
+    </input>
+    <input ref="/data/location_instance_load">
+      <label>Location (odk-instance-load)</label>
+    </input>
+    <input ref="/data/trigger_text">
+      <label>Trigger Text (change to trigger value-changed)</label>
+      <odk:setgeopoint ref="/data/location_value_changed" event="xforms-value-changed" />
+      <odk:setvalue ref="/data/setvalue_target" event="xforms-value-changed" value="/data/trigger_text" />
+    </input>
+    <input ref="/data/location_value_changed">
+      <label>Location (xforms-value-changed)</label>
+    </input>
+    <input ref="/data/setvalue_target">
+      <label>Setvalue Target</label>
+    </input>
+    <group ref="/data/person">
+      <label>Person Repeat Group</label>
+      <repeat nodeset="/data/person">
+        <input ref="/data/person/age">
+          <label>Age</label>
+        </input>
+        <odk:setgeopoint event="odk-new-repeat" ref="/data/person/location_new_repeat" />
+        <input ref="/data/person/location_new_repeat">
+          <label>Location (odk-new-repeat)</label>
+        </input>
+      </repeat>
+    </group>
+  </h:body>
+</h:html>

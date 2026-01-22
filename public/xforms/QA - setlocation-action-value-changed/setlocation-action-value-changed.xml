@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms"
+        xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>setlocation-action-value-changed</h:title>
+        <model>
+            <instance>
+                <data id="setlocation-action-value-changed">
+                    <text/>
+                    <location/>
+                    <location_display/>
+                </data>
+            </instance>
+            <bind nodeset="/data/text" type="string" />
+            <bind nodeset="/data/location" type="string" />
+            <bind nodeset="/data/location_display" type="string" readonly="true()" />
+        </model>
+    </h:head>
+    <h:body>
+        <input ref="/data/text">
+            <odk:setgeopoint ref="/data/location" event="xforms-value-changed" />
+        </input>
+        <input ref="/data/location_display" appearance="placement-map">
+            <label>Location that was collected in background: <output value="/data/location"/></label>
+        </input>
+    </h:body>
+</h:html>

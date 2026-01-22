@@ -1,0 +1,130 @@
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:odk="http://www.opendatakit.org/xforms">
+  <h:head>
+    <h:title>SetLocation_trackingChangesAndLocationTestForm</h:title>
+    <model>
+      <instance>
+        <data id="SetLocation_trackingChangesAndLocationTestForm" version="10002">
+
+          <meta>
+            <instanceID/>
+            <audit/>
+          </meta>
+
+          <location/>
+
+          <number/>
+          <selectOne/>
+          <fieldListGroup>
+            <time/>
+            <text/>
+            <selectMultiple/>
+          </fieldListGroup>
+          <dateTime/>
+
+        </data>
+      </instance>
+      <itext>
+        <translation lang="English">
+          <text id="/data/number:label">
+            <value>Number</value>
+          </text>
+          <text id="/data/selectOne:label">
+            <value>Select One</value>
+          </text>
+          <text id="/data/selectOne:option0">
+            <value>a</value>
+          </text>
+          <text id="/data/selectOne:option1">
+            <value>b</value>
+          </text>
+          <text id="/data/selectOne:option2">
+            <value>c</value>
+          </text>
+          <text id="/data/fieldListGroup:label">
+            <value>Field-List Group</value>
+          </text>
+          <text id="/data/fieldListGroup/time:label">
+            <value>Time</value>
+          </text>
+          <text id="/data/fieldListGroup/text:label">
+            <value>Text</value>
+          </text>
+          <text id="/data/fieldListGroup/selectMultiple:label">
+            <value>Select Multiple</value>
+          </text>
+          <text id="/data/fieldListGroup/selectMultiple:option0">
+            <value>a</value>
+          </text>
+          <text id="/data/fieldListGroup/selectMultiple:option1">
+            <value>b</value>
+          </text>
+          <text id="/data/fieldListGroup/selectMultiple:option2">
+            <value>c</value>
+          </text>
+          <text id="/data/dateTime:label">
+            <value>Date Time</value>
+          </text>
+        </translation>
+      </itext>
+
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/meta/audit" type="binary" odk:track-changes="true" odk:location-priority="high_priority" odk:location-min-interval="10" odk:location-max-age="60"  />
+      <bind nodeset="/data/number" type="int"/>
+      <bind nodeset="/data/selectOne" type="select1"/>
+      <bind nodeset="/data/fieldListGroup/time" type="time"/>
+      <bind nodeset="/data/fieldListGroup/text" type="string"/>
+      <bind nodeset="/data/fieldListGroup/selectMultiple" type="select"/>
+      <bind nodeset="/data/dateTime" type="date"/>
+      <bind nodeset="/data/location" type="geopoint"/>
+      <odk:setgeopoint ref="/data/location" event="odk-instance-first-load" />
+    </model>
+
+  </h:head>
+  <h:body>
+    <input ref="/data/number">
+      <label ref="jr:itext('/data/number:label')"/>
+    </input>
+    <select1 ref="/data/selectOne">
+      <label ref="jr:itext('/data/selectOne:label')"/>
+      <item>
+        <label ref="jr:itext('/data/selectOne:option0')"/>
+        <value>a</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/selectOne:option1')"/>
+        <value>b</value>
+      </item>
+      <item>
+        <label ref="jr:itext('/data/selectOne:option2')"/>
+        <value>c</value>
+      </item>
+    </select1>
+    <group ref="/data/fieldListGroup" appearance="field-list">
+      <label ref="jr:itext('/data/fieldListGroup:label')"/>
+      <input ref="/data/fieldListGroup/time">
+        <label ref="jr:itext('/data/fieldListGroup/time:label')"/>
+      </input>
+      <input ref="/data/fieldListGroup/text">
+        <label ref="jr:itext('/data/fieldListGroup/text:label')"/>
+      </input>
+      <select ref="/data/fieldListGroup/selectMultiple">
+        <label ref="jr:itext('/data/fieldListGroup/selectMultiple:label')"/>
+        <item>
+          <label ref="jr:itext('/data/fieldListGroup/selectMultiple:option0')"/>
+          <value>a</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/fieldListGroup/selectMultiple:option1')"/>
+          <value>b</value>
+        </item>
+        <item>
+          <label ref="jr:itext('/data/fieldListGroup/selectMultiple:option2')"/>
+          <value>c</value>
+        </item>
+      </select>
+    </group>
+    <input ref="/data/dateTime">
+      <label ref="jr:itext('/data/dateTime:label')"/>
+    </input>
+  </h:body>
+</h:html>
