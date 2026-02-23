@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+        xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa"
+        xmlns:odk="http://www.opendatakit.org/xforms" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <h:head>
+        <h:title>An example of a problem using videos</h:title>
+        <model odk:xforms-version="1.0.0">
+            <itext>
+                <translation default="true()" lang="default">
+                    <text id="/data/q1:label">
+                        <value>This plays the video</value>
+                        <value form="video">jr://video/Q1_all.mp4</value>
+                    </text>
+                    <text id="/data/q2:label">
+                        <value>This does not play the video (because its an integer type)</value>
+                        <value form="video">jr://video/Q1_all.mp4</value>
+                    </text>
+                </translation>
+            </itext>
+            <instance>
+                <data id="an_example_problem" version="100">
+                    <q1/>
+                    <q2/>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </data>
+            </instance>
+            <bind nodeset="/data/q1" readonly="true()" type="string"/>
+            <bind nodeset="/data/q2" type="int"/>
+            <bind jr:preload="uid" nodeset="/data/meta/instanceID" readonly="true()" type="string"/>
+        </model>
+    </h:head>
+    <h:body>
+        <input ref="/data/q1">
+            <label ref="jr:itext('/data/q1:label')"/>
+        </input>
+        <input ref="/data/q2">
+            <label ref="jr:itext('/data/q2:label')"/>
+        </input>
+    </h:body>
+</h:html>
