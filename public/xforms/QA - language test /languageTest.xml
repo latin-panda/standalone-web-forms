@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms"
+        xmlns:odk="http://www.opendatakit.org/xforms">
+    <h:head>
+        <h:title>languageTest</h:title>
+        <model odk:xforms-version="1.0.0">
+            <itext>
+                <translation lang="English">
+                    <text id="colors-0">
+                        <value>Red</value>
+                    </text>
+                    <text id="colors-1">
+                        <value>Blue</value>
+                    </text>
+                    <text id="colors-2">
+                        <value>Yellow</value>
+                    </text>
+                    <text id="colors-3">
+                        <value>Green</value>
+                    </text>
+                    <text id="colors-4">
+                        <value>Orange</value>
+                    </text>
+                    <text id="colors-5">
+                        <value>Purple</value>
+                    </text>
+                    <text id="/data/name:label">
+                        <value>Name</value>
+                    </text>
+                    <text id="/data/color_prefs:label">
+                        <value>What colors do you like? +hint</value>
+                    </text>
+                    <text id="/data/color_prefs:hint">
+                        <value>Select three.</value>
+                    </text>
+                    <text id="/data/color_prefs2:label">
+                        <value>What colors do you like? +guidance hint</value>
+                    </text>
+                    <text id="/data/color_prefs2:hint">
+                        <value form="guidance">Select three.</value>
+                    </text>
+                    <text id="/data/coffee:label">
+                        <value>Do you want coffee? +image</value>
+                        <value form="image">jr://images/coffee.png</value>
+                    </text>
+                    <text id="/data/req:jr:requiredMsg">
+                        <value>Please answer the question.</value>
+                    </text>
+                    <text id="/data/req:label">
+                        <value>Required message</value>
+                    </text>
+                    <text id="/data/const:jr:constraintMsg">
+                        <value>True if response is greater than or equal to 18.</value>
+                    </text>
+                    <text id="/data/const:label">
+                        <value>Enter 7 – constraint message</value>
+                    </text>
+                    <text id="/data/vid:label">
+                        <value>What's in the video? - watch it</value>
+                        <value form="video">jr://video/eng.mp4</value>
+                    </text>
+                </translation>
+                <translation lang="Spanish">
+                    <text id="colors-0">
+                        <value>Rojo</value>
+                    </text>
+                    <text id="colors-1">
+                        <value>Azul</value>
+                    </text>
+                    <text id="colors-2">
+                        <value>Amarillo</value>
+                    </text>
+                    <text id="colors-3">
+                        <value>Verde</value>
+                    </text>
+                    <text id="colors-4">
+                        <value>Anaranjado</value>
+                    </text>
+                    <text id="colors-5">
+                        <value>Púrpura</value>
+                    </text>
+                    <text id="/data/name:label">
+                        <value>nonbre</value>
+                    </text>
+                    <text id="/data/color_prefs:label">
+                        <value>¿Qué colores te gustan? +hint</value>
+                    </text>
+                    <text id="/data/color_prefs:hint">
+                        <value>Seleccione tres.</value>
+                    </text>
+                    <text id="/data/color_prefs2:label">
+                        <value>¿Qué colores te gustan? +guidance hint</value>
+                    </text>
+                    <text id="/data/color_prefs2:hint">
+                        <value form="guidance">Seleccione tres.</value>
+                    </text>
+                    <text id="/data/coffee:label">
+                        <value>¿Quieres café? +image</value>
+                        <value form="image">jr://images/cafee.jpeg</value>
+                    </text>
+                    <text id="/data/req:jr:requiredMsg">
+                        <value>Por favor responde la pregunta.</value>
+                    </text>
+                    <text id="/data/req:label">
+                        <value>Required message</value>
+                    </text>
+                    <text id="/data/const:jr:constraintMsg">
+                        <value>Verdadero si la respuesta es mayor o igual a 18.</value>
+                    </text>
+                    <text id="/data/const:label">
+                        <value>Escribe 7 – constraint message</value>
+                    </text>
+                    <text id="/data/vid:label">
+                        <value>¿de qué trata el video? - watch it</value>
+                        <value form="video">jr://video/spanish.mp4</value>
+                    </text>
+                </translation>
+                <translation lang="Polish">
+                    <text id="colors-0">
+                        <value>czerwony</value>
+                    </text>
+                    <text id="colors-1">
+                        <value>niebieski</value>
+                    </text>
+                    <text id="colors-2">
+                        <value>żółty</value>
+                    </text>
+                    <text id="colors-3">
+                        <value>zielony</value>
+                    </text>
+                    <text id="colors-4">
+                        <value>pomarańczowy</value>
+                    </text>
+                    <text id="colors-5">
+                        <value>fioletowy</value>
+                    </text>
+                    <text id="/data/name:label">
+                        <value>Imie</value>
+                    </text>
+                    <text id="/data/color_prefs:label">
+                        <value>Jaki lubisz kolor? +hint</value>
+                    </text>
+                    <text id="/data/color_prefs:hint">
+                        <value>Wybierz trzy.</value>
+                    </text>
+                    <text id="/data/color_prefs2:label">
+                        <value>Jaki lubisz kolor? +guidance hint</value>
+                    </text>
+                    <text id="/data/color_prefs2:hint">
+                        <value form="guidance">Wybierz trzy.</value>
+                    </text>
+                    <text id="/data/coffee:label">
+                        <value>Czy chcesz kawe? +image</value>
+                        <value form="image">jr://images/kawa.jpg</value>
+                    </text>
+                    <text id="/data/req:jr:requiredMsg">
+                        <value>Odpowiedź na pytanie.</value>
+                    </text>
+                    <text id="/data/req:label">
+                        <value>Required message</value>
+                    </text>
+                    <text id="/data/const:jr:constraintMsg">
+                        <value>Prawda jeśli odpowiedź jest równa lub większa od osiemnastu.</value>
+                    </text>
+                    <text id="/data/const:label">
+                        <value>Wpisz 7 – constraint message</value>
+                    </text>
+                    <text id="/data/vid:label">
+                        <value>Co jest w video? - watch it</value>
+                        <value form="video">jr://video/pierogi.mp4</value>
+                    </text>
+                </translation>
+            </itext>
+            <instance>
+                <data id="languageTest" version="1">
+                    <name/>
+                    <color_prefs/>
+                    <color_prefs2/>
+                    <coffee/>
+                    <req/>
+                    <const/>
+                    <vid/>
+                    <meta>
+                        <instanceID/>
+                    </meta>
+                </data>
+            </instance>
+            <instance id="__last-saved" src="jr://instance/last-saved"/>
+            <instance id="colors">
+                <root>
+                    <item>
+                        <itextId>colors-0</itextId>
+                        <name>red</name>
+                    </item>
+                    <item>
+                        <itextId>colors-1</itextId>
+                        <name>blue</name>
+                    </item>
+                    <item>
+                        <itextId>colors-2</itextId>
+                        <name>yellow</name>
+                    </item>
+                    <item>
+                        <itextId>colors-3</itextId>
+                        <name>green</name>
+                    </item>
+                    <item>
+                        <itextId>colors-4</itextId>
+                        <name>orange</name>
+                    </item>
+                    <item>
+                        <itextId>colors-5</itextId>
+                        <name>purple</name>
+                    </item>
+                </root>
+            </instance>
+            <bind nodeset="/data/name" type="string"/>
+            <setvalue ref="/data/name" event="odk-instance-first-load" value=" instance('__last-saved')/data/name "/>
+            <bind nodeset="/data/color_prefs" type="string"/>
+            <bind nodeset="/data/color_prefs2" type="string"/>
+            <bind nodeset="/data/coffee" type="string"/>
+            <bind nodeset="/data/req" type="string" required="true()"
+                  jr:requiredMsg="jr:itext('/data/req:jr:requiredMsg')"/>
+            <bind nodeset="/data/const" type="int" constraint=". &gt;= 18"
+                  jr:constraintMsg="jr:itext('/data/const:jr:constraintMsg')"/>
+            <bind nodeset="/data/vid" type="string"/>
+            <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+        </model>
+    </h:head>
+    <h:body>
+        <input ref="/data/name">
+            <label ref="jr:itext('/data/name:label')"/>
+        </input>
+        <select ref="/data/color_prefs">
+            <label ref="jr:itext('/data/color_prefs:label')"/>
+            <hint ref="jr:itext('/data/color_prefs:hint')"/>
+            <itemset nodeset="instance('colors')/root/item">
+                <value ref="name"/>
+                <label ref="jr:itext(itextId)"/>
+            </itemset>
+        </select>
+        <select ref="/data/color_prefs2">
+            <label ref="jr:itext('/data/color_prefs2:label')"/>
+            <hint ref="jr:itext('/data/color_prefs2:hint')"/>
+            <itemset nodeset="instance('colors')/root/item">
+                <value ref="name"/>
+                <label ref="jr:itext(itextId)"/>
+            </itemset>
+        </select>
+        <input ref="/data/coffee">
+            <label ref="jr:itext('/data/coffee:label')"/>
+        </input>
+        <input ref="/data/req">
+            <label ref="jr:itext('/data/req:label')"/>
+        </input>
+        <input ref="/data/const">
+            <label ref="jr:itext('/data/const:label')"/>
+        </input>
+        <input ref="/data/vid">
+            <label ref="jr:itext('/data/vid:label')"/>
+        </input>
+    </h:body>
+</h:html>
